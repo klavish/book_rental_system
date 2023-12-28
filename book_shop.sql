@@ -63,10 +63,11 @@ CREATE TABLE `books` (
   `modified` datetime DEFAULT NULL,
   `status` enum('Available','Unavailable') DEFAULT NULL,
   `fine` float NOT NULL,
+  `image_path` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`bookId`),
   KEY `categoryId` (`categoryId`),
   CONSTRAINT `books_ibfk_1` FOREIGN KEY (`categoryId`) REFERENCES `categories` (`categoryId`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -75,7 +76,7 @@ CREATE TABLE `books` (
 
 LOCK TABLES `books` WRITE;
 /*!40000 ALTER TABLE `books` DISABLE KEYS */;
-INSERT INTO `books` VALUES (1,'The Great Gatsby','F. Scott Fitzgerald',12,'The novel tells the tragic story of Jay Gatsby, a self-made millionaire, and his pursuit of Daisy Buchanan, a wealthy young woman whom he loved in his youth.',2,40,'gatsby.jpg','2023-12-13 11:22:56','2023-12-13 11:22:56','Available',8),(2,'Guns, Germs, and Steel','Jared Diamond	',6,'The book attempts to explain why Eurasian and North African civilizations have survived and conquered others.',5,70,'Guns.jpg','2023-12-13 11:28:45','2023-12-13 11:28:45','Available',10),(3,'The Lean Startup',' Eric Ries',4,' How Today Entrepreneurs Use Continuous Innovation to Create Radically Successful.',6,80,'LeanStartup.jpg','2023-12-15 12:28:44','2023-12-15 12:28:44','Available',8),(4,'Think and Grow Rich','Napoleon Hill and Rosa Lee Beeland',4,'Weak desire brings weak results, just as a small fire makes a small amount of heat. ',3,70,'thinkandgrow.jpg','2023-12-15 12:35:29','2023-12-15 12:35:29','Available',7),(5,'Getting Things Done','David Allen',4,'Getting Things Done details how to build a system for capturing ideas and working on the right things at the right time. ',6,120,'Things.jpg','2023-12-15 12:38:59','2023-12-15 12:38:59','Available',10),(6,'Milk and Honey','Rupi Kaur',10,'Where the Sidewalk Ends Shel Silverstein. Where the Sidewalk Ends. Want to Read.',3,50,'MlkHoney.jpg','2023-12-15 12:42:10','2023-12-15 12:42:10','Available',5),(7,'Devotions','Mary Oliver',10,'Oprah s Book ClubChosen by Poetry Book Society as their special commendation No matter where one starts reading.',3,60,'Devotions.jpg','2023-12-15 12:49:56','2023-12-15 12:49:56','Available',6),(8,'Sapiens','Yuval Noah Harari',6,'Sapiens is your guide to becoming an expert on the entire history of the human race',4,100,'Sapien.jpg','2023-12-15 12:54:04','2023-12-15 12:54:04','Available',8),(9,'A Brief History of Time','Stephen Hawking',3,'A Short History of Nearly Everything Bill Bryson . The Selfish Gene Richard Dawkins.',7,200,'HistoryofTime.jpg','2023-12-15 13:00:29','2023-12-15 13:00:29','Available',20);
+INSERT INTO `books` VALUES (1,'The Great Gatsby','F. Scott Fitzgerald',12,'The novel tells the tragic story of Jay Gatsby, a self-made millionaire, and his pursuit of Daisy Buchanan, a wealthy young woman whom he loved in his youth.',2,40,'gatsby.jpg','2023-12-13 11:22:56','2023-12-13 11:22:56','Available',8,'http://localhost/book_rental/uploads/gatsby.jpg'),(2,'Guns, Germs, and Steel','Jared Diamond	',6,'The book attempts to explain why Eurasian and North African civilizations have survived and conquered others.',5,70,'Guns.jpg','2023-12-13 11:28:45','2023-12-13 11:28:45','Available',10,'http://localhost/book_rental/uploads/Guns.jpg'),(3,'The Lean Startup',' Eric Ries',4,' How Today Entrepreneurs Use Continuous Innovation to Create Radically Successful.',6,80,'LeanStartup.jpg','2023-12-15 12:28:44','2023-12-15 12:28:44','Available',8,'http://localhost/book_rental/uploads/LeanStartup.jpg'),(4,'Think and Grow Rich','Napoleon Hill and Rosa Lee Beeland',4,'Weak desire brings weak results, just as a small fire makes a small amount of heat. ',3,70,'thinkandgrow.jpg','2023-12-15 12:35:29','2023-12-15 12:35:29','Available',7,'http://localhost/book_rental/uploads/thinkandgrow.jpg'),(5,'Getting Things Done','David Allen',4,'Getting Things Done details how to build a system for capturing ideas and working on the right things at the right time. ',6,120,'Things.jpg','2023-12-15 12:38:59','2023-12-15 12:38:59','Available',10,'http://localhost/book_rental/uploads/Things.jpg'),(6,'Milk and Honey','Rupi Kaur',10,'Where the Sidewalk Ends Shel Silverstein. Where the Sidewalk Ends. Want to Read.',3,50,'MlkHoney.jpg','2023-12-15 12:42:10','2023-12-15 12:42:10','Available',5,'http://localhost/book_rental/uploads/MlkHoney.jpg'),(7,'Devotions','Mary Oliver',10,'Oprah s Book ClubChosen by Poetry Book Society as their special commendation No matter where one starts reading.',3,60,'Devotions.jpg','2023-12-15 12:49:56','2023-12-15 12:49:56','Available',6,'http://localhost/book_rental/uploads/Devotions.jpg'),(8,'Sapiens','Yuval Noah Harari',6,'Sapiens is your guide to becoming an expert on the entire history of the human race',4,100,'Sapien.jpg','2023-12-15 12:54:04','2023-12-15 12:54:04','Available',8,'http://localhost/book_rental/uploads/Sapien.jpg'),(9,'A Brief History of Time','Stephen Hawking',3,'A Short History of Nearly Everything Bill Bryson . The Selfish Gene Richard Dawkins.',7,200,'HistoryofTime.jpg','2023-12-15 13:00:29','2023-12-15 13:00:29','Available',20,'http://localhost/book_rental/uploads/HistoryofTime.jpg'),(10,'The Inevitable','Kevin Kelly',9,'Understanding the 12 Technological Forces That Will Shape Our Future.',4,60,'inevitable.png','2023-12-28 10:46:47','2023-12-28 10:46:47','Available',5,'http://localhost/book_rental/uploads/inevitable.png');
 /*!40000 ALTER TABLE `books` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -124,7 +125,7 @@ CREATE TABLE `image_file` (
   PRIMARY KEY (`id`),
   KEY `userId` (`userId`),
   CONSTRAINT `image_file_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `users` (`userId`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -133,7 +134,7 @@ CREATE TABLE `image_file` (
 
 LOCK TABLES `image_file` WRITE;
 /*!40000 ALTER TABLE `image_file` DISABLE KEYS */;
-INSERT INTO `image_file` VALUES (1,1,'65673845868a5.jpg','user.jpg','2023-11-29 14:10:29','2023-11-29 14:10:29','http://localhost/uploads/65673845868a5.jpg'),(12,12,'65757d0d4fe4a.png','11.png','2023-12-10 09:55:41','2023-12-10 09:55:41','http://localhost/uploads/65757d0d4fe4a.png'),(13,13,'658000fd1336c.png','avatar.png','2023-12-18 09:21:17','2023-12-18 09:21:17','http://localhost/uploads/658000fd1336c.png'),(14,14,'658a18429ed7e.jpg','user5.jpg','2023-12-26 01:03:14','2023-12-26 01:03:14','http://localhost/uploads/658a18429ed7e.jpg'),(15,15,'658a6060c1d22.jpg','user4.jpg','2023-12-26 06:10:56','2023-12-26 06:10:56','http://localhost/uploads/658a6060c1d22.jpg'),(16,16,'658a718fd19ce.jpg','usrs.jpg','2023-12-26 07:24:15','2023-12-26 07:24:15','http://localhost/uploads/658a718fd19ce.jpg');
+INSERT INTO `image_file` VALUES (1,1,'65673845868a5.jpg','user.jpg','2023-11-29 14:10:29','2023-11-29 14:10:29','http://localhost/book_rental/uploads/65673845868a5.jpg'),(12,12,'65757d0d4fe4a.png','11.png','2023-12-10 09:55:41','2023-12-10 09:55:41','http://localhost/book_rental/uploads/65757d0d4fe4a.png'),(13,13,'658000fd1336c.png','avatar.png','2023-12-18 09:21:17','2023-12-18 09:21:17','http://localhost/book_rental/uploads/658000fd1336c.png'),(14,14,'658a18429ed7e.jpg','user5.jpg','2023-12-26 01:03:14','2023-12-26 01:03:14','http://localhost/book_rental/uploads/658a18429ed7e.jpg'),(15,15,'658a6060c1d22.jpg','user4.jpg','2023-12-26 06:10:56','2023-12-26 06:10:56','http://localhost/book_rental/uploads/658a6060c1d22.jpg'),(16,16,'658a718fd19ce.jpg','usrs.jpg','2023-12-26 07:24:15','2023-12-26 07:24:15','http://localhost/book_rental/uploads/658a718fd19ce.jpg'),(17,17,'658d47d0ef7e0.jpg','userr.jpg','2023-12-28 11:02:56','2023-12-28 11:02:56','http://localhost/book_rental/uploads/658d47d0ef7e0.jpg');
 /*!40000 ALTER TABLE `image_file` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -231,7 +232,7 @@ CREATE TABLE `returnedbooks` (
 
 LOCK TABLES `returnedbooks` WRITE;
 /*!40000 ALTER TABLE `returnedbooks` DISABLE KEYS */;
-INSERT INTO `returnedbooks` VALUES (1,12,2,6,'2023-12-14 01:31:59','2023-12-17 01:31:59','2023-12-21 19:22:06','Paid'),(2,13,3,4,'2023-12-20 13:43:03','2023-12-24 13:43:03','2023-12-26 07:55:44','Paid'),(3,13,3,4,'2023-12-20 13:43:03','2023-12-24 13:43:03','2023-12-26 07:56:51','Paid');
+INSERT INTO `returnedbooks` VALUES (1,12,2,6,'2023-12-14 01:31:59','2023-12-17 01:31:59','2023-12-21 19:22:06','Paid'),(2,13,3,4,'2023-12-20 13:43:03','2023-12-24 13:43:03','2023-12-26 07:55:44','Paid');
 /*!40000 ALTER TABLE `returnedbooks` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -253,7 +254,7 @@ CREATE TABLE `users` (
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`userId`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -262,7 +263,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'Abhay Singh','singhabhay@gmail.com','7894152368','$2y$10$ea39g./YIPeWLi640S1djuQedgeX7eipS5AIhwftvvnO3LAD8LoOK','Male','# 9 Vivek Vihar , Mohali.','2023-11-29 14:10:29','2023-11-29 14:10:29'),(12,'Honey','honey@gmail.com','9639653112','$2y$10$dQ4lp65LCJxPMipuENF0qOoQ0ll8.i/WedZ3ALMti2pFzZaefWore','Male','sector 43 market Chandigarh. ','2023-12-10 09:55:41','2023-12-10 09:55:41'),(13,'Rajiv','rajiv@gmail.com','6745233899','$2y$10$Be9M2zrogGQVs4175B/JZ..8Z9mMXSqb6xYhl5PGRffWpz59uR4Ke','Male','# 902 Nehru place Delhi.','2023-12-18 09:21:17','2023-12-18 09:21:17'),(14,'Arun','arun@gmail.com','8496375129','$2y$10$.xllQ5ax3Jns37LbLrbx..GiWDpQBoKtzI759Qsxn.W3JkSdiddOi','Male','# 109 Sunny Enclave Panipat , Haryana.','2023-12-26 01:03:14','2023-12-26 01:03:14'),(15,'Raman','raman@gmail.com','7361948320','$2y$10$f.ZiRCsT1FziJJU/gFVDpOz7RvJNq7DFH0ityjMANnnsB2nIcPwey','Male','# 451 Sector 62 Noida Uttar Pradesh.','2023-12-26 06:10:56','2023-12-26 06:10:56'),(16,'Akshit','akshit@gmail.com','7394468291','$2y$10$6lYWMh96ZGs5x5BOvm6X3eI9G9KDtjQLDEfXzeve04AWc5ji2BEoG','Male','# 72 Vikash Nagar Colony  Chandigarh. ','2023-12-26 07:24:15','2023-12-26 07:24:15');
+INSERT INTO `users` VALUES (1,'Abhay Singh','singhabhay@gmail.com','7894152368','$2y$10$ea39g./YIPeWLi640S1djuQedgeX7eipS5AIhwftvvnO3LAD8LoOK','Male','# 9 Vivek Vihar , Mohali.','2023-11-29 14:10:29','2023-11-29 14:10:29'),(12,'Honey','honey@gmail.com','9639653112','$2y$10$dQ4lp65LCJxPMipuENF0qOoQ0ll8.i/WedZ3ALMti2pFzZaefWore','Male','sector 43 market Chandigarh. ','2023-12-10 09:55:41','2023-12-10 09:55:41'),(13,'Rajiv','rajiv@gmail.com','6745233899','$2y$10$Be9M2zrogGQVs4175B/JZ..8Z9mMXSqb6xYhl5PGRffWpz59uR4Ke','Male','# 902 Nehru place Delhi.','2023-12-18 09:21:17','2023-12-18 09:21:17'),(14,'Arun','arun@gmail.com','8496375129','$2y$10$.xllQ5ax3Jns37LbLrbx..GiWDpQBoKtzI759Qsxn.W3JkSdiddOi','Male','# 109 Sunny Enclave Panipat , Haryana.','2023-12-26 01:03:14','2023-12-26 01:03:14'),(15,'Raman','raman@gmail.com','7361948320','$2y$10$f.ZiRCsT1FziJJU/gFVDpOz7RvJNq7DFH0ityjMANnnsB2nIcPwey','Male','# 451 Sector 62 Noida Uttar Pradesh.','2023-12-26 06:10:56','2023-12-26 06:10:56'),(16,'Akshit','akshit@gmail.com','7394468291','$2y$10$fdwuPMnRoNeaIIJkTZDbrOkXzxbGiahdaXCzvMf1BKTeY9WUXrZW6','Male','# 72 Vikash Nagar Colony  Chandigarh. ','2023-12-26 07:24:15','2023-12-26 07:24:15'),(17,'Rajesh','rajesh@gmail.com','7914685229','$2y$10$iUgUe1ZWmzQRotkUNdRZZe.8qwWqrQOv0fDrcmqcOzm7n8rknZmwG','Male','# 921 Sector  43 Chandigarh.','2023-12-28 11:02:56','2023-12-28 11:02:56');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -283,7 +284,7 @@ CREATE TABLE `verification_codes` (
   PRIMARY KEY (`Id`),
   KEY `userId` (`userId`),
   CONSTRAINT `verification_codes_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `users` (`userId`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -304,4 +305,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-12-26 14:33:02
+-- Dump completed on 2023-12-28 15:49:32

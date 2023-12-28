@@ -36,7 +36,7 @@
                  <?php 
                  foreach($rows as $row):?>
                  <tr class="border">
-                    <td><img class="w-12 h-14 rounded-md" src="<?php echo '../uploads/'.$row['display_name']; ?>"/></td>
+                    <td><img class="w-12 h-14 rounded-md" src="<?php echo $row['image_path']; ?>"/></td>
                     <td class="border"><?php echo $row['title'];?></td>
                     <td class="border"><?php echo $row['author'];?></td>
                     <td class="border"><?php echo $row['category'];?></td>

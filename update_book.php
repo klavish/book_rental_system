@@ -74,7 +74,7 @@ if(!isset($_SESSION['admin_Login'])){
             <label for="image">Image<span class="text-red-600">*</span></label>
             
             <div>
-            <img class="w-12 h-14 rounded-md" src="<?php  echo '../uploads/'.$row['display_name']; ?>"/>Uploaded Image
+            <img class="w-12 h-14 rounded-md" src="<?php  echo $row['image_path']; ?>"/>Uploaded Image
                 <input type="file" name="image" id="image">
                 <span class="text-sm text-red-600"><?php echo $errors['image'] ?? ''; ?></span>
             </div>

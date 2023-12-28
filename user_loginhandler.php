@@ -24,11 +24,14 @@ function handleUserLogin() {
 
         $ob->sql("SELECT * FROM users WHERE email = '{$email}'");
         $res = $ob->getResult();
+       
 
         if (!empty($res)) {
             $user = $res[0];
+         
             if (password_verify($password, $user['password'])) {
-                $_SESSION['loginUser'] = $user;
+                $_SESSION['loginUser'] = $user['userId'];
+
                 header('Location: home.php');
                 exit();
             } else {

@@ -22,11 +22,12 @@ if (isset($_POST['admin_login'])) {
         foreach($res as $key=> $val){
             $val['email'];
             $val['password'];
+            
         }
        
        
         if($_POST['email'] == $val['email'] &&  password_verify(($_POST['password']),$val['password'])){
-            $_SESSION['admin_Login'] = $res;
+            $_SESSION['admin_Login'] = $res[0]['email'];
             header("Location:dashboard.php");
         }
         else{

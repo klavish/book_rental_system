@@ -6,7 +6,7 @@ header('location:user_login.php');
 } 
 ?>
 <?php
-$userId = $_SESSION['loginUser']['userId'];
+$userId = $_SESSION['loginUser'];
 $getStatus = new Database();
 $getStatus->selectId("select paymentStatus from rentedbooks  where userId = '$userId'");
 $status = $getStatus->getResult();
@@ -38,13 +38,13 @@ if (isset($_POST['payment'])) {
     <?php require('views/partials/books_header.php') ?>
     <main class="flex items-center justify-center  space-x-8 container p-6 mx-auto">
         <div class="flex flex-col flex-1  items-start">
-            <?php $userid = $_SESSION['loginUser']['userId'];
+            <?php 
             $db = new Database();
-            $db->sql("select * from rentedbooks left join books on books.bookId=rentedbooks.bookId where userId = '$userid'");
+            $db->sql("select * from rentedbooks left join books on books.bookId=rentedbooks.bookId where userId = '$userId'");
             while ($rows =  $db->getResult()) { ?>
                 <?php foreach ($rows as $row) : ?>
                     <div class="w-full h-full ">
-                        <img class="w-56 h-56  object-fill rounded-sm" src="<?php echo '../uploads/' . $row['display_name']; ?>" >
+                        <img class="w-56 h-56  object-fill rounded-sm" src="<?php echo $row['image_path']; ?>" >
                     </div>
                     <cite class="line-clamp-2 text-base font-medium"> <?php echo "Title :" . $row['title']; ?></cite>
                     <em class="text-sm font-medium "><?php echo "Author :" . " " . $row['author']; ?></em>

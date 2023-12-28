@@ -21,7 +21,7 @@ class User
                 'modified' => $modified
             ];
 
-            $path = '../uploads/';
+            $path = './uploads/';
             $extension  = strtolower(pathinfo($_FILES['profile']['name'])['extension']);
             $file_name = pathinfo($_FILES['profile']['name'])['filename'] . "." . $extension;
             $display_name = $file_name;
@@ -34,7 +34,7 @@ class User
             $obj = new Database();
             $id  =  $obj->selectId("SELECT userId FROM users WHERE email = '$email'");
             $userId = $id;
-            $image_path = "http://localhost/uploads/".$unique_name;
+            $image_path = "http://localhost/book_rental/uploads/".$unique_name;
             
 
             if ($obj1) {
@@ -69,13 +69,14 @@ class User
             $modified = date('Y-m-d H:i:s');
             $id = $_POST['Id'];
            
-            $path = '../uploads/';
+            $path = './uploads/';
             $extension  = strtolower(pathinfo($_FILES['profile']['name'])['extension']);
             $file_name = pathinfo($_FILES['profile']['name'])['filename'] . "." . $extension;
             $unique_name  = uniqid() . "." .  $extension;
             $profile = (file_exists($_FILES['profile']['tmp_name'])) ? $file_name : $row['profile'];
             $display_name = $file_name;
-            $image_path = "http://localhost/uploads/".$unique_name;
+            $image_path = "http://localhost/book_rental/uploads/".$unique_name;
+            
             $update_data = [
                 'name' =>  $_POST['name'],
                 'email' => $_POST['email'],

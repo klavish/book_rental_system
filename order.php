@@ -31,7 +31,7 @@ if (isset($_POST['order'])) {
                 while ($rows =  $db->getResult()) { ?>
                     <?php foreach ($rows as $row) : ?>
                         <div class="w-full h-full ">
-                            <img class="w-56 h-56  object-fill rounded-sm" src="<?php echo '../uploads/' . $row['display_name']; ?>" alt="Product Image">
+                            <img class="w-56 h-56  object-fill rounded-sm" src="<?php echo $row['image_path']; ?>" alt="Book Image">
                         </div>
                         <cite class="line-clamp-2 text-base font-medium"> <?php echo "Title :" . $row['title']; ?></cite>
                         <em class="text-sm font-medium "><?php echo "Author :" . " " . $row['author']; ?></em>

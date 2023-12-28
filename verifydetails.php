@@ -34,7 +34,7 @@ if (isset($_POST['reset'])) {
             <input class="border rounded-md w-full px-4 py-2 text-sm" type="password" name="password" id="password" placeholder="Enter Password" value="<?php echo $_POST['password']?? ''; ?>">
             <span class="text-sm text-red-600"><?php echo $errors['password'] ?? ''; ?></span>
         </div>
-        <label for="confirmpassword" class="text-sm font-medium">New Password <span class="text-red-600">*</span></label>
+        <label for="confirmpassword" class="text-sm font-medium">Confirm Password <span class="text-red-600">*</span></label>
         <div>
             <input class="border rounded-md w-full px-4 py-2 text-sm" type="password" name="confirmpassword" id="confirmpassword" placeholder="Confirm Password" value="<?php echo $_POST['confirmpassword']?? ''; ?>">
             <span class="text-sm text-red-600"><?php echo $errors['confirmpassword'] ?? ''; ?></span>

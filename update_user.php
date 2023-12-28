@@ -45,7 +45,7 @@
 
 
         <label for="profile" class="text-sm font-medium">Profile <span class="text-red-600">*</span> </label>
-        <img class="w-12 h-14 rounded-md" src="<?php  echo '../uploads/'.$row['unique_name']; ?>"/>Uploaded Image
+        <img class="w-12 h-14 rounded-md" src="<?php  echo $row['path']; ?>"/>Uploaded Image
         <div>
         <input type="file" name="profile" id="profile">
         <span class="text-sm text-red-600"><?php echo $errors['profile'] ?? ''; ?></span>

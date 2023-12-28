@@ -65,7 +65,7 @@ class RentedBook
             // Get the current date and time for the transaction
             $transactionDate = date('Y-m-d H:i:s');
             // Get user ID from the session
-            $userId = $_SESSION['loginUser']['userId'];
+            $userId = $_SESSION['loginUser'];
             // Get book information from the form
             $bookId = $_POST['bookId'];
 

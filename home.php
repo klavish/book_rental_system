@@ -22,7 +22,7 @@
                     <li class="<?php echo !isset($_POST['submit']) ? "visible" : "hidden"; ?> w-80 hover:shadow-md hover:shadow-gray-400 rounded-lg  flex justify-center items-center text-start flex-col cursor-pointer pt-4 h-[400px]">
                         <!-- image -->
                         <div class=" w-56 h-56">
-                            <img class="<?php echo !isset($_POST['submit']) ? "visible" : "hidden"; ?> w-full h-full object-fill rounded-sm" src="<?php echo '../uploads/' . $row['display_name']; ?>" alt="book Image">
+                            <img class="<?php echo !isset($_POST['submit']) ? "visible" : "hidden"; ?> w-full h-full object-fill rounded-sm" src="<?php echo $row['image_path']; ?>" alt="book Image">
                         </div>
 
                         <!-- title -->

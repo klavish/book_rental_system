@@ -1,11 +1,12 @@
 <?php
-require_once 'admin_loginhandler.php';
+session_start();
 require_once 'database.php';
 require_once 'user.php';
 
-if(!isset($_SESSION['admin_Login'])){
-    header('location:admin_login.php');
+if(!isset($_SESSION['loginUser'])){
+    header('location:user_login.php');
 }
+$userId = $_GET['userId'];
 
 #handle delete
 if (isset($_POST['delete'])) {

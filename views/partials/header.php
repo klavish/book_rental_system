@@ -60,15 +60,14 @@ if(!isset($_SESSION['admin_Login'])){
                     </path>
                 </svg>
                 
-                <?php foreach($_SESSION['admin_Login'] as $value): ?>
-                <button type="submit" value="<?php echo $value['name']; ?>">
+               
+                <button type="submit" value="submit">
                 <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"  width="16" height="16" fill="currentColor">
                     <path d="M10 20a10 10 0 1 1 0-20 10 10 0 0 1 0 20zM7 6v2a3 3 0 1 0 6 0V6a3 3 0 1 0-6 0zm-3.65 8.44a8 8 0 0 0 13.3 0 15.94 15.94 0 0 0-13.3 0z">
 
                     </path>
                 </svg>
-                <?php //echo $value['admin_Id']; ?>    
-                <?php endforeach ?>
+                
                 </button>
 
                 

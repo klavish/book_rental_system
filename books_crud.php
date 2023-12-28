@@ -9,14 +9,14 @@ class Books
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             
-            $path = '../uploads/';
+            $path = './uploads/';
             $extension  = strtolower(pathinfo($_FILES['image']['name'])['extension']);
             $file_name = pathinfo($_FILES['image']['name'])['filename'] . "." . $extension;
             $display_name = $file_name;
             $image = (file_exists($_FILES['image']['tmp_name'])) ? $file_name : null;
             $created = date('Y-m-d H:i:s');
             $modified = date('Y-m-d H:i:s');
-
+            $image_path = "http://localhost/book_rental/uploads/".$display_name;
             $insert_data = [
                 'title' => $_POST['title'],
                 'author' => $_POST['author'],
@@ -28,7 +28,8 @@ class Books
                 'display_name' => $display_name,
                 'created' => $created,
                 'modified' => $modified,
-                'status'=> $_POST['status']
+                'status'=> $_POST['status'],
+                'image_path'=> $image_path 
             ];
 
             $object = new Database();
@@ -54,13 +55,13 @@ class Books
             
             $modified = date('Y-m-d H:i:s');
 
-            $path = '../uploads/';
+            $path = './uploads/';
             $extension  = strtolower(pathinfo($_FILES['image']['name'])['extension']);
             $file_name = pathinfo($_FILES['image']['name'])['filename'] . "." . $extension;
             $image = (file_exists($_FILES['image']['tmp_name'])) ? $file_name : $row['image'];
             $date_updated = date('Y-m-d H:i:s');
             $display_name = $file_name;
-
+            $image_path = "http://localhost/book_rental/uploads/".$display_name;
             $update_data = [
                 'title' => $_POST['title'],
                 'author' => $_POST['author'],
@@ -71,7 +72,8 @@ class Books
                 'fine' => $_POST['fine'],
                 'display_name' => $display_name,
                 'modified' => $modified,
-                'status'=> $_POST['status']
+                'status'=> $_POST['status'],
+                'image_path'=> $image_path 
 
             ];
 

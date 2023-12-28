@@ -22,8 +22,6 @@ if (isset($_POST['update'])) {
         $book = new Books();
         $errors = $book->updateBook($_POST);
     }
-}else{
-    //header('location:dashboard.php');
 }
 
 ?>
